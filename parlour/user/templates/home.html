@@ -23,7 +23,8 @@
             margin:0;
             color:black;
             margin-right:auto;  
-            padding-left:15px;      /* Pushes links to the right */
+            padding-left:70px;
+               
         }
 
         .navbar a{
@@ -43,6 +44,9 @@
             border-radius:5px;
             font-size:15px;
             cursor:pointer;
+            margin-right:15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
         }
 
         .container{
@@ -58,7 +62,63 @@
             justify-content:space-around;
             padding:30px;
         }
-        
+        .service img{
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .chooseus h1{
+            padding-left:50px;
+        }
+        .chooseus {
+            margin-top: 50px;
+        }
+        .chooseus p{
+            padding-left:50px;
+            padding-right:50px;
+            line-height: 1.5;
+        }
+        .cards{
+            display:flex;
+            justify-content:space-between;
+            gap:25px;
+            flex-wrap:wrap;
+            margin-left:50px;
+            margin-right:50px;
+        }
+
+        .card{
+            flex:1;
+            min-width:260px;
+            background:#fff;
+            border:1px solid #ddd;
+            border-radius:12px;
+            box-shadow:0 4px 10px rgba(0,0,0,.15);
+            transition:.3s;
+            margin-top:30px;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .icon{
+            margin-top:20px;
+            font-size:25px;
+            padding-left:25px;
+        }
+
+        .card h3{
+            font-size:20px;
+            margin-bottom:10px;
+            padding-left:25px;
+        }
+
+        .card p{
+            color:#8c6b78;
+            font-size:15px;
+            padding-left:25px;
+        }
+                
     </style>
 </head>
 <body>
@@ -86,11 +146,42 @@
     </div>
     <h1 style="padding-top:20px;padding-left:60px;">Our Services</h1>
     <div class=service>
-        <div><img src="{% static 'images/service1.jpg' %}" alt="Logo"><p style="margin-bottom:0;" >Haircut</p><p style="margin-top:1px;">Precision cuts and styling for all hair types.</p></div>
-        <div><img src="{% static 'images/service2.jpg' %}" alt="Logo"><p style="margin-bottom:0;" >Haircut</p><p style="margin-top:1px;">Precision cuts and styling for all hair types.</p></div>
-        <div><img src="{% static 'images/service3.jpg' %}" alt="Logo"></div>
-        <div><img src="{% static 'images/service4.jpg' %}" alt="Logo"></div>
+        <div><img src="{% static 'images/service1.jpg' %}" alt="Logo"><p style="margin-bottom:0;font-weight:bold;" >Haircut</p><p style="margin-top:3px;color:#8A6173;">Precision cuts and styling for all hair types.</p></div>
+        <div><img src="{% static 'images/service2.jpg' %}" alt="Logo"><p style="margin-bottom:0;font-weight:bold;" >Facial</p><p style="margin-top:3px;color:#8A6173;">Rejuvenating facials tailored to your skin.</p></div>
+        <div><img src="{% static 'images/service3.jpg' %}" alt="Logo"><p style="margin-bottom:0;font-weight:bold;" >Makeup</p><p style="margin-top:3px;color:#8A6173;">Professional makeup for any occasion.</p></div>
+        <div><img src="{% static 'images/service4.jpg' %}" alt="Logo"><p style="margin-bottom:0;font-weight:bold;" >spa</p><p style="margin-top:3px;color:#8A6173;">Relaxing spa treatments for ultimate wellness.</p></div>
     </div>
+    <div class="chooseus">
+        <h1>Why Choose Us</h1>
+        <p>At Luxe Salon, we are committed to providing an exceptional experience for every client. Our team of skilled professionals uses only the highest quality products and techniques to
+ensure you receive the best possible service.</p>
+<div class="cards">
 
+        <div class="card">
+            <div class="icon">⭐</div>
+            <h3>Expert Stylists</h3>
+            <p>Our stylists are highly trained and experienced in the latest trends and techniques.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Personalized Service</h3>
+            <p>We take the time to understand your individual needs and preferences.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🕒</div>
+            <h3>Convenient Booking</h3>
+            <p>Book your appointment online or by phone at your convenience.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💵</div>
+            <h3>Competitive Pricing</h3>
+            <p>We offer competitive pricing without compromising on quality.</p>
+        </div>
+
+    </div>
+    </div>
 </body>
 </html>
