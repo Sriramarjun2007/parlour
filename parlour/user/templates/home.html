@@ -166,7 +166,119 @@
             font-size:15px;
             color:#222;
         }
-                
+        /* Mobile */
+
+@media (max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:12px;
+        padding:15px;
+    }
+
+    .navbar h2{
+        padding-left:0;
+        margin-right:0;
+    }
+
+    .book{
+        margin-right:0;
+    }
+
+    body{
+        padding-top:170px;
+    }
+
+    .container{
+        flex-direction:column;
+        padding:20px;
+        height:auto;
+        text-align:center;
+        gap:30px;
+    }
+
+    .container div{
+        padding-left:0 !important;
+    }
+
+    .container img{
+        width:100%;
+        height:auto;
+    }
+
+    .container p:first-child{
+        font-size:35px !important;
+    }
+
+    .service{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .service img{
+        width:90%;
+        max-width:350px;
+    }
+
+    .cards{
+        flex-direction:column;
+        margin:20px;
+    }
+
+    .card{
+        width:100%;
+    }
+
+    .chooseus h1,
+    .chooseus p{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .testimonials{
+        padding:20px;
+    }
+
+    .testimonial p{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .profile h3{
+        font-size:16px;
+    }
+
+    } 
+    /* Tablet */
+
+@media (max-width:992px){
+
+    .container{
+        flex-direction:column;
+        height:auto;
+        text-align:center;
+        padding:40px 20px;
+    }
+
+    .container img{
+        width:100%;
+        max-width:500px;
+    }
+
+    .service{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .cards{
+        justify-content:center;
+    }
+
+    .card{
+        flex:0 0 45%;
+    }
+
+    }       
     </style>
 </head>
 <body>
@@ -238,7 +350,7 @@ ensure you receive the best possible service.</p>
     <div class="testimonial">
 
         <div class="profile">
-            <img src="images/user1.jpg" alt="">
+            <img src="{% static 'images/user1.jpg' %}" alt="user1">
             <div>
                 <h3>Sophia Clark</h3>
                 <span>2 months ago</span>
@@ -258,7 +370,7 @@ ensure you receive the best possible service.</p>
     <div class="testimonial">
 
         <div class="profile">
-            <img src="images/user2.jpg" alt="">
+           <img src="{% static 'images/user2.jpg' %}" alt="user2">
             <div>
                 <h3>Ethan Bennett</h3>
                 <span>3 months ago</span>
@@ -277,7 +389,7 @@ ensure you receive the best possible service.</p>
     <div class="testimonial">
 
         <div class="profile">
-            <img src="images/user3.jpg" alt="">
+            <img src="{% static 'images/user3.jpg' %}" alt="user3">
             <div>
                 <h3>Olivia Carter</h3>
                 <span>4 months ago</span>
