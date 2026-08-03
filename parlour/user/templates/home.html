@@ -15,7 +15,11 @@
             padding:10px;
             background-color:white;
              border-bottom: 2px solid #ED2B7D;
-            
+            position:fixed;
+            right:0;
+            top:0;
+            left:0;
+            overflow:hidden;
             
         }
 
@@ -289,10 +293,10 @@
         <h2>Luxe Salon</h2>
 
         <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
         <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'about' %}">About</a>
         <a href="{% url 'contact' %}">Contact</a>
-        <p class="book">Book now</p>
+        <a href="{% url 'booknow' %}"><p class="book" >Book now</p></a>
     </div>
     <div class="container">
         <div style="padding-left:60px">

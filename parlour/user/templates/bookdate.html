@@ -1,0 +1,772 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Select Date - Luxe Salon</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #222;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            padding: 10px 25px;
+
+            background: white;
+
+            border-bottom: 2px solid #ED2B7D;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            z-index: 1000;
+        }
+
+
+        .navbar h2 {
+
+            margin-right: auto;
+
+            padding-left: 40px;
+
+            font-size: 20px;
+
+            color: #222;
+        }
+
+
+        .navbar a {
+
+            text-decoration: none;
+
+            color: #222;
+
+            font-size: 14px;
+        }
+
+
+        .navbar a:hover {
+
+            color: #ED2B7D;
+        }
+
+
+        .book {
+
+            background: #ED2B7D;
+
+            color: white !important;
+
+            padding: 9px 15px;
+
+            border-radius: 5px;
+
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .booking-container {
+
+            width: 500px;
+
+            margin: 0 auto;
+
+            padding-top: 100px;
+
+            padding-bottom: 80px;
+        }
+
+
+        .booking-container h1 {
+
+            font-size: 20px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* ================= CALENDAR ================= */
+
+        .calendar {
+
+            width: 100%;
+
+            border: 1px solid #eee;
+
+            border-radius: 8px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .calendar-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+
+        .calendar-header h2 {
+
+            font-size: 16px;
+        }
+
+
+        .calendar-header button {
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            color: #ED2B7D;
+
+            padding: 5px 10px;
+        }
+
+
+        .calendar-header button:hover {
+
+            background: #fff0f6;
+
+            border-radius: 5px;
+        }
+
+
+        /* ================= DAYS ================= */
+
+        .weekdays {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            text-align: center;
+
+            margin-bottom: 10px;
+        }
+
+
+        .weekdays div {
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            color: #888;
+
+            padding: 7px 0;
+        }
+
+
+        .days {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap: 5px;
+        }
+
+
+        .day {
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .day:hover {
+
+            background: #fff0f6;
+
+            color: #ED2B7D;
+        }
+
+
+        .day.empty {
+
+            cursor: default;
+        }
+
+
+        .day.selected {
+
+            background: #ED2B7D;
+
+            color: white;
+        }
+
+
+        .day.disabled {
+
+            color: #ccc;
+
+            cursor: not-allowed;
+        }
+
+
+        /* ================= SELECTED DATE ================= */
+
+        .selected-date {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            font-size: 12px;
+
+            color: #777;
+        }
+
+
+        .selected-date span {
+
+            color: #ED2B7D;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= CONTINUE ================= */
+
+        .continue-container {
+
+            text-align: center;
+
+            margin-top: 30px;
+        }
+
+
+        .continue-btn {
+
+            border: none;
+
+            background: #ED2B7D;
+
+            color: white;
+
+            padding: 10px 25px;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+
+        .continue-btn:hover {
+
+            background: #d91f6d;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            text-align: center;
+
+            border-top: 1px solid #eee;
+
+            padding: 25px;
+
+            color: #888;
+
+            font-size: 11px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                gap: 10px;
+
+                padding: 10px;
+            }
+
+
+            .navbar h2 {
+
+                padding-left: 0;
+
+                font-size: 15px;
+            }
+
+
+            .navbar a {
+
+                font-size: 10px;
+            }
+
+
+            .book {
+
+                padding: 7px 9px;
+            }
+
+
+            .booking-container {
+
+                width: 90%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h2>
+            Luxe Salon
+        </h2>
+
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+
+        <a href="{% url 'services' %}">
+            Services
+        </a>
+
+
+        <a href="{% url 'booknow' %}">
+            Book
+        </a>
+
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+
+    </nav>
+
+
+    <!-- ================= BOOKING ================= -->
+
+    <main class="booking-container">
+
+
+        <h1>
+            Select Date
+        </h1>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="calendar">
+
+
+                <!-- CALENDAR HEADER -->
+
+                <div class="calendar-header">
+
+                    <button
+                        type="button"
+                        id="previousMonth">
+                        ‹
+                    </button>
+
+
+                    <h2 id="monthYear"></h2>
+
+
+                    <button
+                        type="button"
+                        id="nextMonth">
+                        ›
+                    </button>
+
+                </div>
+
+
+                <!-- WEEK DAYS -->
+
+                <div class="weekdays">
+
+                    <div>S</div>
+                    <div>M</div>
+                    <div>T</div>
+                    <div>W</div>
+                    <div>T</div>
+                    <div>F</div>
+                    <div>S</div>
+
+                </div>
+
+
+                <!-- DAYS -->
+
+                <div
+                    class="days"
+                    id="calendarDays">
+                </div>
+
+
+            </div>
+
+
+            <!-- SELECTED DATE -->
+
+            <div class="selected-date">
+
+                Selected Date:
+
+                <span id="selectedDate">
+                    None
+                </span>
+
+            </div>
+
+
+            <!-- HIDDEN INPUT -->
+
+            <input
+                type="hidden"
+                name="booking_date"
+                id="bookingDate"
+            >
+
+
+            <!-- CONTINUE -->
+
+            <div class="continue-container">
+
+                <button
+                    type="submit"
+                    class="continue-btn"
+                    id="continueButton"
+                    disabled
+                >
+                    Continue
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        ©2024 Luxe Salon.
+        All rights reserved.
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        const monthYear =
+            document.getElementById("monthYear");
+
+        const calendarDays =
+            document.getElementById("calendarDays");
+
+        const previousMonth =
+            document.getElementById("previousMonth");
+
+        const nextMonth =
+            document.getElementById("nextMonth");
+
+        const selectedDateText =
+            document.getElementById("selectedDate");
+
+        const bookingDate =
+            document.getElementById("bookingDate");
+
+        const continueButton =
+            document.getElementById("continueButton");
+
+
+        let currentDate = new Date();
+
+
+        let selectedDate = null;
+
+
+        function generateCalendar() {
+
+            calendarDays.innerHTML = "";
+
+
+            const year =
+                currentDate.getFullYear();
+
+
+            const month =
+                currentDate.getMonth();
+
+
+            const monthNames = [
+
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+
+            ];
+
+
+            monthYear.textContent =
+                monthNames[month] + " " + year;
+
+
+            const firstDay =
+                new Date(
+                    year,
+                    month,
+                    1
+                ).getDay();
+
+
+            const totalDays =
+                new Date(
+                    year,
+                    month + 1,
+                    0
+                ).getDate();
+
+
+            /* EMPTY DAYS */
+
+            for (
+                let i = 0;
+                i < firstDay;
+                i++
+            ) {
+
+                const empty =
+                    document.createElement("div");
+
+                empty.classList.add(
+                    "day",
+                    "empty"
+                );
+
+                calendarDays.appendChild(
+                    empty
+                );
+            }
+
+
+            /* ACTUAL DAYS */
+
+            for (
+                let day = 1;
+                day <= totalDays;
+                day++
+            ) {
+
+                const dayElement =
+                    document.createElement("div");
+
+
+                dayElement.classList.add(
+                    "day"
+                );
+
+
+                dayElement.textContent =
+                    day;
+
+
+                dayElement.addEventListener(
+                    "click",
+                    function () {
+
+                        document
+                            .querySelectorAll(".day")
+                            .forEach(d =>
+                                d.classList.remove(
+                                    "selected"
+                                )
+                            );
+
+
+                        this.classList.add(
+                            "selected"
+                        );
+
+
+                        selectedDate =
+                            new Date(
+                                year,
+                                month,
+                                day
+                            );
+
+
+                        const formattedDate =
+                            year +
+                            "-" +
+                            String(month + 1)
+                                .padStart(2, "0") +
+                            "-" +
+                            String(day)
+                                .padStart(2, "0");
+
+
+                        bookingDate.value =
+                            formattedDate;
+
+
+                        selectedDateText.textContent =
+                            formattedDate;
+
+
+                        continueButton.disabled =
+                            false;
+
+                    }
+                );
+
+
+                calendarDays.appendChild(
+                    dayElement
+                );
+
+            }
+
+        }
+
+
+        previousMonth.addEventListener(
+            "click",
+            function () {
+
+                currentDate.setMonth(
+                    currentDate.getMonth() - 1
+                );
+
+                generateCalendar();
+
+            }
+        );
+
+
+        nextMonth.addEventListener(
+            "click",
+            function () {
+
+                currentDate.setMonth(
+                    currentDate.getMonth() + 1
+                );
+
+                generateCalendar();
+
+            }
+        );
+
+
+        generateCalendar();
+
+    </script>
+
+
+</body>
+
+</html>
+```

@@ -1,0 +1,548 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Select Service</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            background-color: white;
+            border-bottom: 2px solid #ED2B7D;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            color: black;
+            margin-right: auto;
+            padding-left: 70px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+        }
+
+        .navbar a:hover {
+            color: #ED2B7D;
+        }
+
+        /* ================= BOOK BUTTON ================= */
+
+        .book {
+            background-color: #ED2B7D;
+            color: white !important;
+
+            padding: 10px 15px;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            margin-right: 15px;
+
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+            display: inline-block;
+        }
+
+        .book:hover {
+            color: white !important;
+            text-decoration: none;
+            background-color: #d91f6d;
+        }
+
+        /* ================= MAIN ================= */
+
+        .services-container {
+            width: 600px;
+
+            margin: 0 auto;
+
+            padding-top: 110px;
+        }
+
+        .services-container h1 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* ================= SERVICE ROW ================= */
+
+        .service-row {
+            display: grid;
+
+            grid-template-columns: 280px 1fr;
+
+            align-items: center;
+
+            margin-bottom: 26px;
+
+            padding: 8px;
+
+            border: 1px solid transparent;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .service-row:hover {
+            background: #fff5f9;
+        }
+
+        .service-row.selected {
+            border: 1px solid #ed2b7d;
+
+            background: #fff5f9;
+        }
+
+        /* ================= SERVICE INFO ================= */
+
+        .service-info {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+        .service-name {
+            font-size: 9px;
+
+            font-weight: 500;
+        }
+
+        .service-description {
+            font-size: 7px;
+
+            color: #9b7889;
+        }
+
+        .price {
+            width: 44px;
+
+            text-align: center;
+
+            background: #f4f1f2;
+
+            border-radius: 4px;
+
+            padding: 4px 5px;
+
+            font-size: 7px;
+
+            margin-top: 2px;
+        }
+
+        /* ================= RADIO ================= */
+
+        .service-select {
+            display: none;
+        }
+
+        /* ================= IMAGE ================= */
+
+        .service-image {
+            width: 294px;
+
+            height: 90px;
+
+            object-fit: cover;
+
+            border-radius: 5px;
+
+            display: block;
+        }
+
+        /* ================= CONTINUE ================= */
+
+        .continue-container {
+            text-align: center;
+
+            margin-top: 45px;
+
+            margin-bottom: 40px;
+        }
+
+        .continue-btn {
+            border: none;
+
+            background: #ed2b7d;
+
+            color: white;
+
+            padding: 8px 18px;
+
+            border-radius: 4px;
+
+            font-size: 8px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .continue-btn:hover {
+            background: #d91f6d;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 10px 15px;
+
+                gap: 10px;
+            }
+
+            .navbar h2 {
+                padding-left: 0;
+
+                font-size: 16px;
+            }
+
+            .navbar a {
+                font-size: 11px;
+            }
+
+            .book {
+                font-size: 11px;
+
+                padding: 8px 10px;
+
+                margin-right: 0;
+            }
+
+            .services-container {
+                width: 90%;
+
+                padding-top: 100px;
+            }
+
+            .service-row {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+            }
+
+            .service-image {
+                width: 100%;
+
+                height: 120px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h2>
+            Luxe Salon
+        </h2>
+
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+
+        <a href="{% url 'services' %}">
+            Services
+        </a>
+
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+
+        <a href="{% url 'booknow' %}" class="book">
+            Book Now
+        </a>
+
+    </nav>
+
+
+    <!-- ================= SERVICES ================= -->
+
+    <main class="services-container">
+
+
+        <h1>
+            Select Service
+        </h1>
+
+
+        <form method="POST" action="{% url 'booknow' %}">
+
+            {% csrf_token %}
+
+
+            <!-- ================= HAIRCUT ================= -->
+
+            <label
+                class="service-row"
+                for="haircut"
+            >
+
+                <input
+                    type="radio"
+                    id="haircut"
+                    name="service"
+                    value="Haircut"
+                    class="service-select"
+                    required
+                >
+
+
+                <div class="service-info">
+
+                    <div class="service-name">
+                        Haircut
+                    </div>
+
+                    <div class="service-description">
+                        A classic haircut to refresh your style.
+                    </div>
+
+                    <div class="price">
+                        $50
+                    </div>
+
+                </div>
+
+
+                <img
+                    src="{% static 'images/haircut.png' %}"
+                    alt="Haircut"
+                    class="service-image"
+                >
+
+            </label>
+
+
+            <!-- ================= MANICURE ================= -->
+
+            <label
+                class="service-row"
+                for="manicure"
+            >
+
+                <input
+                    type="radio"
+                    id="manicure"
+                    name="service"
+                    value="Manicure"
+                    class="service-select"
+                >
+
+
+                <div class="service-info">
+
+                    <div class="service-name">
+                        Manicure
+                    </div>
+
+                    <div class="service-description">
+                        A classic manicure to refresh your style.
+                    </div>
+
+                    <div class="price">
+                        $30
+                    </div>
+
+                </div>
+
+
+                <img
+                    src="{% static 'images/manicure.png' %}"
+                    alt="Manicure"
+                    class="service-image"
+                >
+
+            </label>
+
+
+            <!-- ================= PEDICURE ================= -->
+
+            <label
+                class="service-row"
+                for="pedicure"
+            >
+
+                <input
+                    type="radio"
+                    id="pedicure"
+                    name="service"
+                    value="Pedicure"
+                    class="service-select"
+                >
+
+
+                <div class="service-info">
+
+                    <div class="service-name">
+                        Pedicure
+                    </div>
+
+                    <div class="service-description">
+                        A classic pedicure to refresh your style.
+                    </div>
+
+                    <div class="price">
+                        $40
+                    </div>
+
+                </div>
+
+
+                <img
+                    src="{% static 'images/pedicure.jpg' %}"
+                    alt="Pedicure"
+                    class="service-image"
+                >
+
+            </label>
+
+
+            <!-- ================= FACIAL ================= -->
+
+            <label
+                class="service-row"
+                for="facial"
+            >
+
+                <input
+                    type="radio"
+                    id="facial"
+                    name="service"
+                    value="Facial"
+                    class="service-select"
+                >
+
+
+                <div class="service-info">
+
+                    <div class="service-name">
+                        Facial
+                    </div>
+
+                    <div class="service-description">
+                        A classic facial to refresh your style.
+                    </div>
+
+                    <div class="price">
+                        $70
+                    </div>
+
+                </div>
+
+
+                <img
+                    src="{% static 'images/facial.png' %}"
+                    alt="Facial"
+                    class="service-image"
+                >
+
+            </label>
+
+
+            <!-- ================= CONTINUE ================= -->
+
+            <div class="continue-container">
+
+                <button
+                    type="submit"
+                    class="continue-btn"
+                >
+                    Continue
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        const serviceRows =
+            document.querySelectorAll(".service-row");
+
+
+        serviceRows.forEach(row => {
+
+            row.addEventListener("click", function () {
+
+                serviceRows.forEach(item => {
+
+                    item.classList.remove("selected");
+
+                });
+
+
+                this.classList.add("selected");
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+</html>
+
