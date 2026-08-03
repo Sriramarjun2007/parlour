@@ -3,9 +3,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Select Service</title>
 
@@ -81,7 +85,6 @@
 
         .book:hover {
             color: white !important;
-            text-decoration: none;
             background-color: #d91f6d;
         }
 
@@ -89,9 +92,7 @@
 
         .services-container {
             width: 600px;
-
             margin: 0 auto;
-
             padding-top: 110px;
         }
 
@@ -128,7 +129,6 @@
 
         .service-row.selected {
             border: 1px solid #ed2b7d;
-
             background: #fff5f9;
         }
 
@@ -144,13 +144,11 @@
 
         .service-name {
             font-size: 9px;
-
             font-weight: 500;
         }
 
         .service-description {
             font-size: 7px;
-
             color: #9b7889;
         }
 
@@ -201,7 +199,9 @@
         }
 
         .continue-btn {
-            border: none;
+            display: inline-block;
+
+            text-decoration: none;
 
             background: #ed2b7d;
 
@@ -220,6 +220,20 @@
 
         .continue-btn:hover {
             background: #d91f6d;
+
+            color: white;
+        }
+
+        /* ================= ERROR ================= */
+
+        .error-message {
+            display: none;
+
+            color: #ed2b7d;
+
+            font-size: 9px;
+
+            margin-top: 10px;
         }
 
         /* ================= MOBILE ================= */
@@ -228,13 +242,11 @@
 
             .navbar {
                 padding: 10px 15px;
-
                 gap: 10px;
             }
 
             .navbar h2 {
                 padding-left: 0;
-
                 font-size: 16px;
             }
 
@@ -244,32 +256,29 @@
 
             .book {
                 font-size: 11px;
-
                 padding: 8px 10px;
-
                 margin-right: 0;
             }
 
             .services-container {
                 width: 90%;
-
                 padding-top: 100px;
             }
 
             .service-row {
                 grid-template-columns: 1fr;
-
                 gap: 12px;
             }
 
             .service-image {
                 width: 100%;
-
                 height: 120px;
             }
+
         }
 
     </style>
+
 </head>
 
 
@@ -305,7 +314,10 @@
         </a>
 
 
-        <a href="{% url 'booknow' %}" class="book">
+        <a
+            href="{% url 'booknow' %}"
+            class="book"
+        >
             Book Now
         </a>
 
@@ -316,201 +328,192 @@
 
     <main class="services-container">
 
-
         <h1>
             Select Service
         </h1>
 
 
-        <form method="POST" action="{% url 'booknow' %}">
+        <!-- ================= HAIRCUT ================= -->
 
-            {% csrf_token %}
+        <label
+            class="service-row"
+            for="haircut"
+        >
 
-
-            <!-- ================= HAIRCUT ================= -->
-
-            <label
-                class="service-row"
-                for="haircut"
+            <input
+                type="radio"
+                id="haircut"
+                name="service"
+                value="Haircut"
+                class="service-select"
             >
 
-                <input
-                    type="radio"
-                    id="haircut"
-                    name="service"
-                    value="Haircut"
-                    class="service-select"
-                    required
-                >
+            <div class="service-info">
 
-
-                <div class="service-info">
-
-                    <div class="service-name">
-                        Haircut
-                    </div>
-
-                    <div class="service-description">
-                        A classic haircut to refresh your style.
-                    </div>
-
-                    <div class="price">
-                        $50
-                    </div>
-
+                <div class="service-name">
+                    Haircut
                 </div>
 
-
-                <img
-                    src="{% static 'images/haircut.png' %}"
-                    alt="Haircut"
-                    class="service-image"
-                >
-
-            </label>
-
-
-            <!-- ================= MANICURE ================= -->
-
-            <label
-                class="service-row"
-                for="manicure"
-            >
-
-                <input
-                    type="radio"
-                    id="manicure"
-                    name="service"
-                    value="Manicure"
-                    class="service-select"
-                >
-
-
-                <div class="service-info">
-
-                    <div class="service-name">
-                        Manicure
-                    </div>
-
-                    <div class="service-description">
-                        A classic manicure to refresh your style.
-                    </div>
-
-                    <div class="price">
-                        $30
-                    </div>
-
+                <div class="service-description">
+                    A classic haircut to refresh your style.
                 </div>
 
-
-                <img
-                    src="{% static 'images/manicure.png' %}"
-                    alt="Manicure"
-                    class="service-image"
-                >
-
-            </label>
-
-
-            <!-- ================= PEDICURE ================= -->
-
-            <label
-                class="service-row"
-                for="pedicure"
-            >
-
-                <input
-                    type="radio"
-                    id="pedicure"
-                    name="service"
-                    value="Pedicure"
-                    class="service-select"
-                >
-
-
-                <div class="service-info">
-
-                    <div class="service-name">
-                        Pedicure
-                    </div>
-
-                    <div class="service-description">
-                        A classic pedicure to refresh your style.
-                    </div>
-
-                    <div class="price">
-                        $40
-                    </div>
-
+                <div class="price">
+                    $50
                 </div>
-
-
-                <img
-                    src="{% static 'images/pedicure.jpg' %}"
-                    alt="Pedicure"
-                    class="service-image"
-                >
-
-            </label>
-
-
-            <!-- ================= FACIAL ================= -->
-
-            <label
-                class="service-row"
-                for="facial"
-            >
-
-                <input
-                    type="radio"
-                    id="facial"
-                    name="service"
-                    value="Facial"
-                    class="service-select"
-                >
-
-
-                <div class="service-info">
-
-                    <div class="service-name">
-                        Facial
-                    </div>
-
-                    <div class="service-description">
-                        A classic facial to refresh your style.
-                    </div>
-
-                    <div class="price">
-                        $70
-                    </div>
-
-                </div>
-
-
-                <img
-                    src="{% static 'images/facial.png' %}"
-                    alt="Facial"
-                    class="service-image"
-                >
-
-            </label>
-
-
-            <!-- ================= CONTINUE ================= -->
-
-            <div class="continue-container">
-
-                <button
-                    type="submit"
-                    class="continue-btn"
-                >
-                    Continue
-                </button>
 
             </div>
 
+            <img
+                src="{% static 'images/haircut.png' %}"
+                alt="Haircut"
+                class="service-image"
+            >
 
-        </form>
+        </label>
+
+
+        <!-- ================= MANICURE ================= -->
+
+        <label
+            class="service-row"
+            for="manicure"
+        >
+
+            <input
+                type="radio"
+                id="manicure"
+                name="service"
+                value="Manicure"
+                class="service-select"
+            >
+
+            <div class="service-info">
+
+                <div class="service-name">
+                    Manicure
+                </div>
+
+                <div class="service-description">
+                    A classic manicure to refresh your style.
+                </div>
+
+                <div class="price">
+                    $30
+                </div>
+
+            </div>
+
+            <img
+                src="{% static 'images/manicure.png' %}"
+                alt="Manicure"
+                class="service-image"
+            >
+
+        </label>
+
+
+        <!-- ================= PEDICURE ================= -->
+
+        <label
+            class="service-row"
+            for="pedicure"
+        >
+
+            <input
+                type="radio"
+                id="pedicure"
+                name="service"
+                value="Pedicure"
+                class="service-select"
+            >
+
+            <div class="service-info">
+
+                <div class="service-name">
+                    Pedicure
+                </div>
+
+                <div class="service-description">
+                    A classic pedicure to refresh your style.
+                </div>
+
+                <div class="price">
+                    $40
+                </div>
+
+            </div>
+
+            <img
+                src="{% static 'images/pedicure.jpg' %}"
+                alt="Pedicure"
+                class="service-image"
+            >
+
+        </label>
+
+
+        <!-- ================= FACIAL ================= -->
+
+        <label
+            class="service-row"
+            for="facial"
+        >
+
+            <input
+                type="radio"
+                id="facial"
+                name="service"
+                value="Facial"
+                class="service-select"
+            >
+
+            <div class="service-info">
+
+                <div class="service-name">
+                    Facial
+                </div>
+
+                <div class="service-description">
+                    A classic facial to refresh your style.
+                </div>
+
+                <div class="price">
+                    $70
+                </div>
+
+            </div>
+
+            <img
+                src="{% static 'images/facial.png' %}"
+                alt="Facial"
+                class="service-image"
+            >
+
+        </label>
+
+
+        <!-- ================= CONTINUE ================= -->
+
+        <div class="continue-container">
+
+            <a
+                href="{% url 'select_date' %}"
+                class="continue-btn"
+                id="continueBtn"
+            >
+                Continue
+            </a>
+
+
+            <p
+                id="errorMessage"
+                class="error-message"
+            >
+                Please select a service first.
+            </p>
+
+        </div>
 
     </main>
 
@@ -522,6 +525,17 @@
         const serviceRows =
             document.querySelectorAll(".service-row");
 
+        const serviceInputs =
+            document.querySelectorAll(".service-select");
+
+        const continueBtn =
+            document.getElementById("continueBtn");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+
+        /* ================= SELECT SERVICE ================= */
 
         serviceRows.forEach(row => {
 
@@ -533,16 +547,68 @@
 
                 });
 
-
                 this.classList.add("selected");
+
+                errorMessage.style.display = "none";
 
             });
 
         });
 
+
+        /* ================= CONTINUE ================= */
+
+        continueBtn.addEventListener("click", function(event) {
+
+            let selectedService = null;
+
+
+            serviceInputs.forEach(input => {
+
+                if (input.checked) {
+
+                    selectedService = input.value;
+
+                }
+
+            });
+
+
+            /* ================= NO SERVICE ================= */
+
+            if (!selectedService) {
+
+                event.preventDefault();
+
+                errorMessage.style.display = "block";
+
+                return;
+
+            }
+
+
+            /* ================= SERVICE SELECTED ================= */
+
+            /*
+                Send the selected service to Django.
+
+                Example:
+
+                select_date/?service=Haircut
+            */
+
+            const baseUrl = "{% url 'select_date' %}";
+
+            this.href =
+                baseUrl +
+                "?service=" +
+                encodeURIComponent(selectedService);
+
+        });
+
     </script>
 
-
 </body>
+
 </html>
 

@@ -2,10 +2,46 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+
     path("", views.home, name="home"),
-    path("about/", views.about, name="about"),
+
     path("services/", views.services, name="services"),
-    path("contact/", views.contact, name="contact"),
+
     path("booknow/", views.booknow, name="booknow"),
-    path("bookdate/", views.bookdate, name="bookdate"),
+
+    path(
+        "select-date/",
+        views.select_date,
+        name="select_date"
+    ),
+
+    path(
+        "customer-details/",
+        views.customer_details,
+        name="customer_details"
+    ),
+
+    path(
+        "confirm-booking/",
+        views.confirm_booking,
+        name="confirm_booking"
+    ),
+
+    path(
+        "payment/",
+        views.payment,
+        name="payment"
+    ),
+
+    path(
+        "about/",
+        views.about,
+        name="about"
+    ),
+
+    path(
+        "contact/",
+        views.contact,
+        name="contact"
+    ),
 ]

@@ -1,0 +1,452 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Confirm Booking - Luxe Salon</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 10px 25px;
+
+            background: white;
+
+            border-bottom: 2px solid #ED2B7D;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            margin-right: auto;
+            padding-left: 40px;
+
+            font-size: 20px;
+            color: #222;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #222;
+            font-size: 14px;
+        }
+
+        .navbar a:hover {
+            color: #ED2B7D;
+        }
+
+        .book {
+            background: #ED2B7D;
+            color: white !important;
+
+            padding: 9px 15px;
+
+            border-radius: 5px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .book:hover {
+            background: #d91f6d;
+            color: white !important;
+        }
+
+        /* ================= MAIN ================= */
+
+        .confirm-container {
+            width: 500px;
+            margin: 0 auto;
+
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .confirm-container h1 {
+            font-size: 24px;
+            text-align: center;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+
+            font-size: 13px;
+
+            margin-bottom: 30px;
+        }
+
+        /* ================= BOOKING CARD ================= */
+
+        .booking-card {
+            border: 1px solid #eee;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            background: white;
+        }
+
+        .booking-card h2 {
+            font-size: 17px;
+
+            margin-bottom: 20px;
+
+            color: #ED2B7D;
+        }
+
+        /* ================= DETAILS ================= */
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail-title {
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #222;
+        }
+
+        .price {
+            color: #ED2B7D;
+            font-size: 17px;
+        }
+
+        /* ================= PAYMENT INFO ================= */
+
+        .payment-box {
+            margin-top: 25px;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            background: #fff5f9;
+
+            border: 1px solid #f7c5dc;
+        }
+
+        .payment-box h3 {
+            font-size: 14px;
+
+            color: #ED2B7D;
+
+            margin-bottom: 8px;
+        }
+
+        .payment-box p {
+            font-size: 12px;
+
+            color: #777;
+
+            line-height: 1.5;
+        }
+
+        /* ================= PAYMENT BUTTON ================= */
+
+        .payment-container {
+            text-align: center;
+
+            margin-top: 30px;
+        }
+
+        .payment-btn {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #ED2B7D;
+
+            color: white;
+
+            padding: 12px 30px;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            border: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .payment-btn:hover {
+            background: #d91f6d;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-container {
+            text-align: center;
+
+            margin-top: 15px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
+        .back-btn:hover {
+            color: #ED2B7D;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+
+            border-top: 1px solid #eee;
+
+            padding: 25px;
+
+            color: #888;
+
+            font-size: 11px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .navbar h2 {
+                padding-left: 0;
+                font-size: 15px;
+            }
+
+            .navbar a {
+                font-size: 10px;
+            }
+
+            .book {
+                padding: 7px 9px;
+            }
+
+            .confirm-container {
+                width: 90%;
+                padding-top: 100px;
+            }
+
+            .booking-card {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h2>
+            Luxe Salon
+        </h2>
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+        <a href="{% url 'services' %}">
+            Services
+        </a>
+
+      
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+          <a href="{% url 'booknow' %}" class="book">
+            Book Now
+        </a>
+    </nav>
+
+
+    <!-- ================= CONFIRM BOOKING ================= -->
+
+    <main class="confirm-container">
+
+        <h1>
+            Confirm Your Booking
+        </h1>
+
+        <p class="subtitle">
+            Please check your booking details before making payment.
+        </p>
+
+
+        <div class="booking-card">
+
+            <h2>
+                Booking Details
+            </h2>
+
+
+            <div class="detail">
+
+    <span class="detail-title">
+        Amount
+    </span>
+
+    <span class="detail-value price">
+        ${{ price }}
+    </span>
+
+</div>
+
+
+            <div class="detail">
+
+                <span class="detail-title">
+                    Date
+                </span>
+
+                <span class="detail-value">
+                    {{ booking_date }}
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span class="detail-title">
+                    Amount
+                </span>
+
+                <span class="detail-value price">
+                    ${{ price }}
+                </span>
+
+            </div>
+
+
+            <div class="payment-box">
+
+                <h3>
+                    Payment Required
+                </h3>
+
+                <p>
+                    Your appointment will be confirmed after
+                    completing the payment.
+                </p>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="payment-container">
+
+                <a
+                    href="{% url 'payment' %}"
+                    class="payment-btn"
+                >
+                    Proceed to Payment
+                </a>
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <div class="back-container">
+
+                <a
+                    href="{% url 'select_date' %}"
+                    class="back-btn"
+                >
+                    ← Change Date
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Luxe Salon.
+        All rights reserved.
+
+    </footer>
+
+</body>
+
+</html>

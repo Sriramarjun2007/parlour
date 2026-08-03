@@ -1,14 +1,20 @@
-```html
+
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Services</title>
 
+
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -16,10 +22,12 @@
             font-family: Arial, sans-serif;
         }
 
+
         body {
             background: #ffffff;
             color: #222;
         }
+
 
         /* ================= NAVBAR ================= */
 
@@ -27,350 +35,729 @@
             display: flex;
             align-items: center;
             gap: 25px;
+
             padding: 15px 25px;
+
             background-color: white;
+
             border-bottom: 2px solid #ED2B7D;
 
             position: fixed;
+
             top: 0;
             left: 0;
             right: 0;
 
-            /* IMPORTANT */
             z-index: 9999;
 
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
+
         .navbar h2 {
             margin: 0;
+
             color: black;
+
             margin-right: auto;
+
             padding-left: 45px;
         }
 
+
         .navbar a {
             text-decoration: none;
+
             color: black;
+
             font-size: 15px;
+
             padding: 8px 5px;
+
             transition: 0.3s;
         }
+
 
         .navbar a:hover {
             color: #ED2B7D;
+
             text-decoration: underline;
         }
 
+
+        /* ================= BOOK BUTTON ================= */
+
         .book {
             background-color: #ED2B7D;
+
             color: white;
+
             padding: 10px 18px;
+
             border-radius: 5px;
+
             font-size: 15px;
+
             cursor: pointer;
+
             margin: 0;
+
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
             transition: 0.3s;
         }
+
 
         .book:hover {
             background-color: #d61f6c;
         }
 
+
         /* ================= SERVICES ================= */
 
         .services {
+
             padding: 40px 60px 60px;
 
-            /* IMPORTANT:
-               Prevents content from hiding behind navbar */
             margin-top: 75px;
         }
 
+
         .services h1 {
+
             margin-top: 20px;
+
             font-size: 35px;
+
             margin-bottom: 8px;
         }
 
+
         .services > p {
+
             font-size: 18px;
+
             margin-bottom: 40px;
+
             color: #555;
         }
+
 
         /* ================= GRID ================= */
 
         .service-container {
+
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 35px;
         }
+
 
         /* ================= CARD ================= */
 
         .card {
+
             background: #fff;
+
             border-radius: 15px;
+
             overflow: hidden;
+
             box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+
             transition: 0.3s;
         }
 
+
         .card:hover {
+
             transform: translateY(-8px);
         }
 
+
         .card img {
+
             width: 100%;
+
             height: 250px;
+
             object-fit: cover;
+
             display: block;
         }
+
 
         /* ================= CONTENT ================= */
 
         .content {
+
             padding: 20px;
         }
 
+
         .content h3 {
+
             font-size: 24px;
+
             margin-bottom: 10px;
+
             color: #222;
         }
 
+
         .content p {
+
             color: #666;
+
             line-height: 1.6;
+
             margin-bottom: 10px;
+
             font-size: 16px;
         }
 
+
         .content .price {
+
             color: #ED2B7D;
+
             font-weight: bold;
         }
 
+
         /* ================= BUTTON ================= */
 
+        .content a {
+
+            text-decoration: none;
+        }
+
+
         .content button {
+
             margin-top: 10px;
+
             background: #ED2B7D;
+
             color: #fff;
+
             border: none;
+
             padding: 12px 22px;
+
             border-radius: 8px;
+
             font-size: 16px;
+
             cursor: pointer;
+
             transition: 0.3s;
         }
 
+
         .content button:hover {
+
             background: #d61f6c;
         }
+
 
         /* ================= TABLET ================= */
 
         @media(max-width: 992px) {
 
             .service-container {
+
                 grid-template-columns: repeat(2, 1fr);
             }
 
+
             .services {
+
                 padding: 40px;
+
                 margin-top: 75px;
             }
 
+
             .navbar h2 {
+
                 padding-left: 10px;
             }
         }
+
 
         /* ================= MOBILE ================= */
 
         @media(max-width: 768px) {
 
             .navbar {
+
                 gap: 10px;
+
                 padding: 12px;
             }
 
+
             .navbar h2 {
+
                 font-size: 20px;
+
                 padding-left: 0;
             }
 
+
             .navbar a {
+
                 font-size: 13px;
             }
+
 
             .book {
+
                 padding: 8px 12px;
+
                 font-size: 13px;
             }
 
+
             .service-container {
+
                 grid-template-columns: 1fr;
             }
 
+
             .services {
+
                 padding: 20px;
+
                 margin-top: 70px;
             }
 
+
             .services h1 {
+
                 font-size: 30px;
             }
 
+
             .services > p {
+
                 font-size: 16px;
             }
 
+
             .card img {
+
                 height: 220px;
             }
 
+
             .content h3 {
+
                 font-size: 22px;
             }
 
+
             .content p {
+
                 font-size: 15px;
             }
 
+
             .content button {
+
                 width: 100%;
             }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- ================= NAVBAR ================= -->
+
     <div class="navbar">
 
-        <h2>Luxe Salon</h2>
+        <h2>
+            Luxe Salon
+        </h2>
 
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'services' %}">Services</a>
-        <a href="{% url 'about' %}">About</a>
-        <a href="{% url 'contact' %}">Contact</a>
 
-        <p class="book">Book now</p>
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+
+        <a href="{% url 'services' %}">
+            Services
+        </a>
+
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+
+        <a href="{% url 'booknow' %}">
+            <p class="book">
+                Book now
+            </p>
+        </a>
 
     </div>
 
 
-    <!-- SERVICES -->
+    <!-- ================= SERVICES ================= -->
+
     <section class="services">
 
-        <h1>Our Services</h1>
+
+        <h1>
+            Our Services
+        </h1>
+
 
         <p>
             Explore our range of services designed to enhance your natural
             beauty and leave you feeling refreshed and confident.
         </p>
 
+
         <div class="service-container">
 
-            <div class="card">
-                <img src="{% static 'images/salon1.jpg' %}" alt="Haircut">
-                <div class="content">
-                    <h3>Haircut & Styling</h3>
-                    <p>From classic cuts to modern styles.</p>
-                    <p class="price">$50 - $150 | 1 - 2 hours</p>
-                    <button>View Details</button>
-                </div>
-            </div>
+
+            <!-- ================= HAIRCUT ================= -->
 
             <div class="card">
-                <img src="{% static 'images/salon2.jpg' %}" alt="Makeup">
+
+                <img
+                    src="{% static 'images/salon1.jpg' %}"
+                    alt="Haircut"
+                >
+
                 <div class="content">
-                    <h3>Makeup Application</h3>
-                    <p>Professional makeup for every occasion.</p>
-                    <p class="price">$60 - $120 | 1.5 hours</p>
-                    <button>View Details</button>
+
+                    <h3>
+                        Haircut & Styling
+                    </h3>
+
+                    <p>
+                        From classic cuts to modern styles.
+                    </p>
+
+                    <p class="price">
+                        $50 - $150 | 1 - 2 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="card">
-                <img src="{% static 'images/salon3.jpg' %}" alt="Hair Color">
-                <div class="content">
-                    <h3>Hair Coloring</h3>
-                    <p>Premium hair coloring services.</p>
-                    <p class="price">$80 - $250 | 2 - 4 hours</p>
-                    <button>View Details</button>
-                </div>
-            </div>
+
+            <!-- ================= MAKEUP ================= -->
 
             <div class="card">
-                <img src="{% static 'images/salon4.jpg' %}" alt="Bridal">
+
+                <img
+                    src="{% static 'images/salon2.jpg' %}"
+                    alt="Makeup"
+                >
+
                 <div class="content">
-                    <h3>Bridal Package</h3>
-                    <p>Complete bridal beauty package.</p>
-                    <p class="price">$200 - $500 | 3 - 6 hours</p>
-                    <button>View Details</button>
+
+                    <h3>
+                        Makeup Application
+                    </h3>
+
+                    <p>
+                        Professional makeup for every occasion.
+                    </p>
+
+                    <p class="price">
+                        $60 - $120 | 1.5 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="card">
-                <img src="{% static 'images/salon5.jpg' %}" alt="Nails">
-                <div class="content">
-                    <h3>Manicure & Pedicure</h3>
-                    <p>Luxury nail care services.</p>
-                    <p class="price">$40 - $100 | 1 - 1.5 hours</p>
-                    <button>View Details</button>
-                </div>
-            </div>
+
+            <!-- ================= HAIR COLOR ================= -->
 
             <div class="card">
-                <img src="{% static 'images/salon6.jpg' %}" alt="Facial">
+
+                <img
+                    src="{% static 'images/salon3.jpg' %}"
+                    alt="Hair Color"
+                >
+
                 <div class="content">
-                    <h3>Facial Treatment</h3>
-                    <p>Customized facials for glowing skin.</p>
-                    <p class="price">$75 - $200 | 1 - 2 hours</p>
-                    <button>View Details</button>
+
+                    <h3>
+                        Hair Coloring
+                    </h3>
+
+                    <p>
+                        Premium hair coloring services.
+                    </p>
+
+                    <p class="price">
+                        $80 - $250 | 2 - 4 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
                 </div>
+
             </div>
 
-            <div class="card">
-                <img src="{% static 'images/salon7.jpg' %}" alt="Massage">
-                <div class="content">
-                    <h3>Massage Therapy</h3>
-                    <p>Relaxing full-body massage.</p>
-                    <p class="price">$80 - $180 | 1 - 2 hours</p>
-                    <button>View Details</button>
-                </div>
-            </div>
+
+            <!-- ================= BRIDAL ================= -->
 
             <div class="card">
-                <img src="{% static 'images/salon8.jpg' %}" alt="Waxing">
+
+                <img
+                    src="{% static 'images/salon4.jpg' %}"
+                    alt="Bridal"
+                >
+
                 <div class="content">
-                    <h3>Waxing Services</h3>
-                    <p>Smooth, hair-free skin.</p>
-                    <p class="price">$30 - $80 | 30 - 60 mins</p>
-                    <button>View Details</button>
+
+                    <h3>
+                        Bridal Package
+                    </h3>
+
+                    <p>
+                        Complete bridal beauty package.
+                    </p>
+
+                    <p class="price">
+                        $200 - $500 | 3 - 6 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
                 </div>
+
             </div>
 
+
+            <!-- ================= NAILS ================= -->
+
             <div class="card">
-                <img src="{% static 'images/salon8.jpg' %}" alt="Skin Care">
+
+                <img
+                    src="{% static 'images/salon5.jpg' %}"
+                    alt="Nails"
+                >
+
                 <div class="content">
-                    <h3>Skin Care</h3>
-                    <p>Professional skin rejuvenation treatments.</p>
-                    <p class="price">$90 - $220 | 1 - 2 hours</p>
-                    <button>View Details</button>
+
+                    <h3>
+                        Manicure & Pedicure
+                    </h3>
+
+                    <p>
+                        Luxury nail care services.
+                    </p>
+
+                    <p class="price">
+                        $40 - $100 | 1 - 1.5 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
                 </div>
+
             </div>
+
+
+            <!-- ================= FACIAL ================= -->
+
+            <div class="card">
+
+                <img
+                    src="{% static 'images/salon6.jpg' %}"
+                    alt="Facial"
+                >
+
+                <div class="content">
+
+                    <h3>
+                        Facial Treatment
+                    </h3>
+
+                    <p>
+                        Customized facials for glowing skin.
+                    </p>
+
+                    <p class="price">
+                        $75 - $200 | 1 - 2 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MASSAGE ================= -->
+
+            <div class="card">
+
+                <img
+                    src="{% static 'images/salon7.jpg' %}"
+                    alt="Massage"
+                >
+
+                <div class="content">
+
+                    <h3>
+                        Massage Therapy
+                    </h3>
+
+                    <p>
+                        Relaxing full-body massage.
+                    </p>
+
+                    <p class="price">
+                        $80 - $180 | 1 - 2 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= WAXING ================= -->
+
+            <div class="card">
+
+                <img
+                    src="{% static 'images/salon8.jpg' %}"
+                    alt="Waxing"
+                >
+
+                <div class="content">
+
+                    <h3>
+                        Waxing Services
+                    </h3>
+
+                    <p>
+                        Smooth, hair-free skin.
+                    </p>
+
+                    <p class="price">
+                        $30 - $80 | 30 - 60 mins
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SKIN CARE ================= -->
+
+            <div class="card">
+
+                <img
+                    src="{% static 'images/salon8.jpg' %}"
+                    alt="Skin Care"
+                >
+
+                <div class="content">
+
+                    <h3>
+                        Skin Care
+                    </h3>
+
+                    <p>
+                        Professional skin rejuvenation treatments.
+                    </p>
+
+                    <p class="price">
+                        $90 - $220 | 1 - 2 hours
+                    </p>
+
+
+                    <a href="{% url 'booknow' %}">
+                        <button type="button">
+                            View Details
+                        </button>
+                    </a>
+
+                </div>
+
+            </div>
+
 
         </div>
 
     </section>
 
+
 </body>
+
 </html>
 
